@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 
 // Test data
@@ -24,6 +25,8 @@ let projects = [
     }
 ];
 
+// Enable cors for all origins
+app.use(cors());
 
 app.use(express.json(),(req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -32,6 +35,11 @@ app.use(express.json(),(req, res, next) => {
 })
 
 app.use(express.json());
+
+// Index
+app.get('/', (req, res) => {
+    res.send(' Welcom to my projects API!');
+});
 
 // Get all projects
 app.get('/projects', (req, res) => {
