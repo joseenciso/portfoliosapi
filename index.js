@@ -28,14 +28,6 @@ let projects = [
 // Enable cors for all origins
 app.use(cors());
 
-app.use(express.json(),(req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-})
-
-app.use(express.json());
-
 // Index
 app.get('/', (req, res) => {
     res.send(' Welcom to my projects API!');
