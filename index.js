@@ -24,7 +24,11 @@ let projects = [
     }
 ];
 
-app.use(express.json());
+
+app.use(express.json(),(req, res, next) => {
+    res.header("Access-Controll-Allow-Origin", "*")
+})
+//app.use(express.json());
 
 // Get all projects
 app.get('/projects', (req, res) => {
