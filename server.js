@@ -7,34 +7,39 @@ const PORT = process.env.PORT || 3000;
 let projects = [
     {
         id: 0,
-        name: 'Backpocket',
+        title: 'Backpocket',
         description: 'Online shopping website mainly build with Python and Django.',
-        image: 'backpocket.png'
+        image: 'backpocket.png',
+        tech: ['Python', 'Django'],
+        url: 'https://floating-brook-26346-12d4fb64a603.herokuapp.com/'
     },
     {
         id: 1,
-        name: 'Test Item 2',
+        title: 'Test Item 2',
         description: 'Test Item 2 Description',
-        image: ''
+        image: '',
+        url: 'https://floating-brook-26346-12d4fb64a603.herokuapp.com/'
     },
     {
         id: 2,
-        name: 'Test Item 3',
+        title: 'Test Item 3',
         description: 'Test Item 3 Description',
-        image: ''
+        image: '',
+        url: 'https://floating-brook-26346-12d4fb64a603.herokuapp.com/'
     }
 ];
 
 // Enable cors for all origins
 app.use(cors());
 
-// Index
-app.get('/', (req, res) => {
+// Serve files from public folder
+app.use(express.static('public'));
+/*app.get('/', (req, res) => {
     res.send(' Welcom to my projects API!');
-});
+});*/
 
 // Get all projects
-app.get('/projects', (req, res) => {
+app.get('/api/projects', (req, res) => {
     res.json(projects);
 });
 
